@@ -16,7 +16,7 @@ class MyFlixApplication extends React.Component {
   }
 }
 
-// Finds the root of your app
+// Finds the root of your app advance react
 const container = document.getElementsByClassName('app-container')[0];
 
 // Tells React to render your app in the root DOM element
