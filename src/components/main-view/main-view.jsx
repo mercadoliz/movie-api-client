@@ -7,8 +7,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { DirectorView } from '../director-view/director-view';
 import {GenreView} from '../genre-view/genre-view'
+import { connect } from 'react-redux';
+import { setMovies } from '../../actions/actions';
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     // Call the superclass constructor
     // so React can initialize it
@@ -38,9 +40,8 @@ export class MainView extends React.Component {
     })
       .then(response => {
         // Assign the result to the state
-        this.setState({
-          movies: response.data
-        });
+        this.props.setMovies(response.data);
+
       })
       .catch(function (error) {
         console.log(error);
@@ -66,8 +67,8 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie, user } = this.state;
-
+    let { movies } = this.props;
+    let { user } = this.state;
 
     // Before the movies have been loaded
     if (!movies) return <div className="main-view" />;
@@ -98,3 +99,7 @@ export class MainView extends React.Component {
     );
   }
 }
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+export default connect(mapStateToProps, { setMovies } )(MainView);
