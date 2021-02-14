@@ -15,7 +15,7 @@ export function RegistrationView(props) {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    axios.post('https://flixnet-2020.herokuapp.com/users', {
+    axios.post('https://myflix-lizmovies.herokuapp.com/users', {
       Username: username,
       Password: password,
       Email: email,

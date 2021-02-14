@@ -39,7 +39,7 @@ export class ProfileView extends React.Component {
   getUser(token) {
     //console.log(localStorage.getItem("user"));
     let url =
-      "https://my-flix-db-app.herokuapp.com/users/" +
+      "https://myflix-lizmovies.herokuapp.com/users/" +
       localStorage.getItem("user");
     axios
       .get(url, {
@@ -52,7 +52,7 @@ export class ProfileView extends React.Component {
           password: response.data.Password,
           email: response.data.Email,
           dob: this.formatDate(response.data.Birthday),
-          favoriteMovies: response.data.FavoriteMovies,
+          // favoriteMovies: response.data.FavoriteMovies,
         });
       });
   }
@@ -78,7 +78,7 @@ export class ProfileView extends React.Component {
     let token = localStorage.getItem("token");
     let user = localStorage.getItem("user");
     axios
-      .delete(`https://my-flix-db-app.herokuapp.com/users/${user}`, {
+      .delete(`https://myflix-lizmovies.herokuapp.com/users/${user}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
