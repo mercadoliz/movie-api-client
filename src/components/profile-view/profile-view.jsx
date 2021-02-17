@@ -52,27 +52,27 @@ export class ProfileView extends React.Component {
           password: response.data.Password,
           email: response.data.Email,
           dob: this.formatDate(response.data.Birthday),
-          // favoriteMovies: response.data.FavoriteMovies,
+          favoriteMovies: response.data.FavoriteMovies,
         });
       });
   }
 
-  //   removeFavorite(movie) {
-  //     let token = localStorage.getItem("token");
-  //     let url =
-  //       "https://my-flix-db-app.herokuapp.com/users/" +
-  //       localStorage.getItem("user") +
-  //       "/favorites/" +
-  //       movie._id;
-  //     axios
-  //       .delete(url, {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       })
-  //       .then((response) => {
-  //         console.log(response);
-  //         this.componentDidMount();
-  //       });
-  //   }
+    removeFavorite(movie) {
+      let token = localStorage.getItem("token");
+      let url =
+        "https://myflix-lizmovies.herokuapp.com/users/" +
+        localStorage.getItem("user") +
+        "/Movies/" +
+        movie._id;
+      axios
+        .delete(url, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          console.log(response);
+          this.componentDidMount();
+        });
+    }
 
   handleDelete() {
     let token = localStorage.getItem("token");
@@ -95,9 +95,9 @@ export class ProfileView extends React.Component {
   render() {
     const { movies } = this.props;
     // this.getUser(localStorage.getItem("token"));
-    // const favoriteMovieList = movies.filter((movie) => {
-    //   return this.state.favoriteMovies.includes(movie._id);
-    // });
+    const favoriteMovieList = movies.filter((movie) => {
+      return this.state.favoriteMovies.includes(movie._id);
+    });
     // console.log(favoriteMovieList);
 
     if (!movies) alert("Please sign in");
@@ -140,7 +140,7 @@ export class ProfileView extends React.Component {
                 </Button>
               </Form>
             </Col>
-            {/* <Col>
+            <Col>
               <div
                 className="favoriteMovies"
                 style={{
@@ -154,6 +154,7 @@ export class ProfileView extends React.Component {
                   return (
                     <div key={movie._id}>
                       <Card>
+                      <Card.Img variant="top" src={movie.ImagePath} />
                         <Card.Body>
                           <Link to={`/movies/${movie._id}`}>
                             <Card.Title>{movie.Title}</Card.Title>
@@ -167,7 +168,7 @@ export class ProfileView extends React.Component {
                   );
                 })}
               </div>
-            </Col> */}
+            </Col>
           </Row>
         </Container>
       </div>

@@ -1,19 +1,34 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
-
-
+import Button from "react-bootstrap/Button";
+import axios from "axios";
 
 export class MovieView extends React.Component {
-
   constructor() {
     super();
 
     this.state = {};
-
   }
-  refreshPage() {
-    window.location.reload(false);
+  addFavorite(movie) {
+    let token = localStorage.getItem("token");
+    let url =
+      "https://myflix-lizmovies.herokuapp.com/users/" +
+      localStorage.getItem("user") +
+      "/Movies/" +
+      movie._id;
+
+    console.log(token);
+
+    axios
+      .post(url, "", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response);
+        // window.open("/", "_self");
+        window.open("/movies/" + movie._id, "_self");
+        alert("Added to favorites!");
+      });
   }
 
   render() {
@@ -32,7 +47,6 @@ export class MovieView extends React.Component {
           <span className="label">Description: </span>
           <span className="value">{movie.Description}</span>
         </div>
-
         <div className="movie-genre">
           <span className="label">Genre: </span>
           <span className="value">{movie.Genre.Name}</span>
@@ -44,12 +58,17 @@ export class MovieView extends React.Component {
         <Link to={`/directors/${movie.Director.Name}`}>
           <Button variant="link">Director</Button>
         </Link>
-
         <Link to={`/genres/${movie.Genre.Name}`}>
           <Button variant="link">Genre</Button>
-        </Link>       </div>
-
-
+        </Link>
+        <Button
+          variant="primary"
+          size="sm"
+          onClick={() => this.addFavorite(movie)}
+        >
+          Add to Favorites
+        </Button>
+      </div>
     );
   }
 }

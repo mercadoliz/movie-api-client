@@ -40227,27 +40227,30 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           username: response.data.Username,
           password: response.data.Password,
           email: response.data.Email,
-          dob: _this2.formatDate(response.data.Birthday) // favoriteMovies: response.data.FavoriteMovies,
-
+          dob: _this2.formatDate(response.data.Birthday),
+          favoriteMovies: response.data.FavoriteMovies
         });
       });
-    } //   removeFavorite(movie) {
-    //     let token = localStorage.getItem("token");
-    //     let url =
-    //       "https://my-flix-db-app.herokuapp.com/users/" +
-    //       localStorage.getItem("user") +
-    //       "/favorites/" +
-    //       movie._id;
-    //     axios
-    //       .delete(url, {
-    //         headers: { Authorization: `Bearer ${token}` },
-    //       })
-    //       .then((response) => {
-    //         console.log(response);
-    //         this.componentDidMount();
-    //       });
-    //   }
+    }
+  }, {
+    key: "removeFavorite",
+    value: function removeFavorite(movie) {
+      var _this3 = this;
 
+      var token = localStorage.getItem("token");
+
+      var url = "https://myflix-lizmovies.herokuapp.com/users/" + localStorage.getItem("user") + "/Movies/" + movie._id;
+
+      _axios.default.delete(url, {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        console.log(response);
+
+        _this3.componentDidMount();
+      });
+    }
   }, {
     key: "handleDelete",
     value: function handleDelete() {
@@ -40270,13 +40273,13 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var movies = this.props.movies; // this.getUser(localStorage.getItem("token"));
-      // const favoriteMovieList = movies.filter((movie) => {
-      //   return this.state.favoriteMovies.includes(movie._id);
-      // });
-      // console.log(favoriteMovieList);
+
+      var favoriteMovieList = movies.filter(function (movie) {
+        return _this4.state.favoriteMovies.includes(movie._id);
+      }); // console.log(favoriteMovieList);
 
       if (!movies) alert("Please sign in");
       return _react.default.createElement("div", {
@@ -40318,9 +40321,29 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         size: "sm",
         block: true,
         onClick: function onClick() {
-          return _this3.handleDelete();
+          return _this4.handleDelete();
         }
-      }, "Delete Account"))))));
+      }, "Delete Account"))), _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
+        className: "favoriteMovies",
+        style: {
+          float: "right",
+          textAlign: "center",
+          width: "24rem"
+        }
+      }, _react.default.createElement("h1", null, "Favorite Movies"), favoriteMovieList.map(function (movie) {
+        return _react.default.createElement("div", {
+          key: movie._id
+        }, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Img, {
+          variant: "top",
+          src: movie.ImagePath
+        }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_reactRouterDom.Link, {
+          to: "/movies/".concat(movie._id)
+        }, _react.default.createElement(_Card.default.Title, null, movie.Title)))), _react.default.createElement(_Button.default, {
+          onClick: function onClick() {
+            return _this4.removeFavorite(movie);
+          }
+        }, "Remove"));
+      }))))));
     }
   }]);
 
@@ -40428,6 +40451,8 @@ var _reactRouterDom = require("react-router-dom");
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
+var _axios = _interopRequireDefault(require("axios"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -40468,13 +40493,30 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(MovieView, [{
-    key: "refreshPage",
-    value: function refreshPage() {
-      window.location.reload(false);
+    key: "addFavorite",
+    value: function addFavorite(movie) {
+      var token = localStorage.getItem("token");
+
+      var url = "https://myflix-lizmovies.herokuapp.com/users/" + localStorage.getItem("user") + "/Movies/" + movie._id;
+
+      console.log(token);
+
+      _axios.default.post(url, "", {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        console.log(response); // window.open("/", "_self");
+
+        window.open("/movies/" + movie._id, "_self");
+        alert("Added to favorites!");
+      });
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var movie = this.props.movie;
       if (!movie) return null;
       return _react.default.createElement("div", {
@@ -40514,7 +40556,13 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         to: "/genres/".concat(movie.Genre.Name)
       }, _react.default.createElement(_Button.default, {
         variant: "link"
-      }, "Genre")), "       ");
+      }, "Genre")), _react.default.createElement(_Button.default, {
+        variant: "primary",
+        size: "sm",
+        onClick: function onClick() {
+          return _this2.addFavorite(movie);
+        }
+      }, "Add to Favorites"));
     }
   }]);
 
@@ -40522,7 +40570,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MovieView = MovieView;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js"}],"components/director-view/director-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../node_modules/axios/index.js"}],"components/director-view/director-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -43482,7 +43530,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51693" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63983" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
