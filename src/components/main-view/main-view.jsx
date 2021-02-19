@@ -26,9 +26,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 // import "./main-view.scss";
-import {UpdateView} from "../update-view/update-view";
+import { UpdateView } from "../update-view/update-view";
+import MoviesList from "../movies-list/movies-list";
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     // call the superclass constructor so react can initialize it
     super();
@@ -46,9 +47,9 @@ export class MainView extends React.Component {
       })
       .then((response) => {
         // #1
-        this.setState({
-          movies: response.data
-        });      })
+        this.props.setMovies(response.data);
+
+      })
       .catch(function (error) {
         console.log(error);
       });
@@ -101,8 +102,8 @@ export class MainView extends React.Component {
 
     // #2
     // let { movies, visibilityFilter } = this.props;
-    let { user, movies } = this.state;
-
+    let { movies } = this.props;
+    let { user } = this.state;
     /* If there is no user, the LoginView is rendered.  If there is a user logged in, the user details are *passed as a prop to the LoginView */
 
     // Before the movies have been loaded
@@ -180,7 +181,7 @@ export class MainView extends React.Component {
                 return (
                   <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                 );
-              return movies.map((m) => <MovieCard key={m._id} movie={m} />);
+              return <MoviesList movies= {movies}/>;
             }}
           />
           {/* return ( */}
