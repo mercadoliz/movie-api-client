@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
+
 
 export class MovieView extends React.Component {
   constructor() {

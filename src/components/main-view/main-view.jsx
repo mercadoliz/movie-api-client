@@ -28,6 +28,10 @@ import Button from "react-bootstrap/Button";
 // import "./main-view.scss";
 import { UpdateView } from "../update-view/update-view";
 import MoviesList from "../movies-list/movies-list";
+import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
+import {Form, FormControl} from 'react-bootstrap'
+import './main-view.scss'
+
 
 class MainView extends React.Component {
   constructor() {
@@ -48,7 +52,6 @@ class MainView extends React.Component {
       .then((response) => {
         // #1
         this.props.setMovies(response.data);
-
       })
       .catch(function (error) {
         console.log(error);
@@ -102,7 +105,7 @@ class MainView extends React.Component {
 
     // #2
     // let { movies, visibilityFilter } = this.props;
-    let { movies } = this.props;
+    let { movies, visibilityFilter } = this.props;
     let { user } = this.state;
     /* If there is no user, the LoginView is rendered.  If there is a user logged in, the user details are *passed as a prop to the LoginView */
 
@@ -128,7 +131,14 @@ class MainView extends React.Component {
               className="justify-content-end"
               id="basic-navbar-nav"
             >
-              {/* <VisibilityFilterInput visibilityFilter={visibilityFilter} /> */}
+              <Form inline>
+                
+                 <VisibilityFilterInput
+                className="mr-sm-2"
+                visibilityFilter={visibilityFilter}
+              />
+              </Form>
+             
               {!user ? (
                 <ul>
                   <Link to={`/`}>
@@ -181,7 +191,7 @@ class MainView extends React.Component {
                 return (
                   <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                 );
-              return <MoviesList movies= {movies}/>;
+              return <MoviesList movies={movies} />;
             }}
           />
           {/* return ( */}
