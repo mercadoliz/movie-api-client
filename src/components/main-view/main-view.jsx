@@ -31,6 +31,7 @@ import MoviesList from "../movies-list/movies-list";
 import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
 import {Form, FormControl} from 'react-bootstrap'
 import './main-view.scss'
+import About from '../about/about'
 
 
 class MainView extends React.Component {
@@ -200,6 +201,9 @@ class MainView extends React.Component {
           {/* )} */}
           {/* </div> */}
           <Route path="/register" render={() => <RegistrationView />} />
+
+          <Route path="/about" render={() => <About />} />
+
 
           <Route
             exact
