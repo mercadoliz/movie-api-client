@@ -141,7 +141,8 @@ class MainView extends React.Component {
               </Form>
              
               {!user ? (
-                <ul>
+                <ul className= "main-nav">
+  
                   <Link to={`/`}>
                     <Button variant="link" className="navbar-link">
                       Sign In

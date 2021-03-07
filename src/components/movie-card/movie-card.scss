@@ -1,0 +1,45 @@
+.card {
+    box-shadow: 4px 4px 5px 0px black;
+    border: none;
+    height: 100%;
+  }
+  
+  .card-img-top {
+    background-color: #181818;
+  }
+  .card-body {
+    text-align: center;
+    padding: 8px;
+    background-color: #181818;
+  }
+  .card-text {
+    margin-bottom: 0;
+    line-height: 1.1;
+    color: white;
+  }
+  .movieCard-img {
+    padding: 5px;
+  }
+  .movieCard-description {
+    padding-top: 10px;
+    text-align: left;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+  }
+  
+  .movieCard-button {
+    margin-top: 7%;
+  }
+  .movieCard-title {
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+  }
+  .movieCard-cardBody {
+    .detailInfo {
+      color: white;
+      text-align: right;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+    }
+  }
