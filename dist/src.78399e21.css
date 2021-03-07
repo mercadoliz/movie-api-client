@@ -1,3 +1,7 @@
+.movie-view {
+  justify-content: center !important;
+  text-align: center;
+}
 .navbar {
   background-color: #4E4E45;
 }
