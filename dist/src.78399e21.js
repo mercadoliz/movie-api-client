@@ -54609,7 +54609,11 @@ var About = /*#__PURE__*/function (_Component) {
   _createClass(About, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, _react.default.createElement("h1", null, "About"), _react.default.createElement("p", null, "This page is about me. This is what I enjoy doing:"), _react.default.createElement("ul", null, _react.default.createElement("li", null, "Learning new things"), _react.default.createElement("li", null, "Spending time in nature"), _react.default.createElement("li", null, "Shopping"), _react.default.createElement("li", null, "Eating dessert")));
+      return _react.default.createElement("div", null, _react.default.createElement("h1", null, "About"), _react.default.createElement("img", {
+        src: "img/ElizabethMercado.jpg",
+        "class": "profile__portrait",
+        alt: "Elizabeth Mercado Portrait"
+      }), _react.default.createElement("p", null, "Hello, I\u2019m Elizabeth. I\u2019m a developer with a background in social work and community organizing. My roles included supporting children and adults in their leadership development as they navigated their journeys in policy advocacy and change. I\u2019m transitioning to software development because I understand the power technology has in the world today to make effective and fast change in order to make life more just and equitable for all. I am looking for an opportunity to couple my social justice lens and my curiosity to use tech for social good."), _react.default.createElement("p", null, "Throughout this project, I learned how to utilize React for frontend devlelopment and Node.js for backened development. I also had the chance to learn more about databases, such as MongoDB to store all of the movie data used for this application. And of course, ensuring that all code was pushed to GitHub to for hosting and version control."), _react.default.createElement("p", null, "When I'm not learning how to code or thinking about how to change society, I'm:"), _react.default.createElement("ul", null, _react.default.createElement("li", null, "Learning new recipes"), _react.default.createElement("li", null, "Spending time in nature"), _react.default.createElement("li", null, "Shopping"), _react.default.createElement("li", null, "Eating dessert")));
     }
   }]);
 
@@ -55092,7 +55096,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58192" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53392" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
