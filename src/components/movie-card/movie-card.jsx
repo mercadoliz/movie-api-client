@@ -53,7 +53,6 @@ export class MovieCard extends React.Component {
             <Card.Text className='detailInfo'>{movie.Genre.Name}</Card.Text>
             <Card.Text className='detailInfo'>{movie.RunTime}</Card.Text>
             <Card.Text className='detailInfo'>
-              {movie.IMDbRating} out of 10
             </Card.Text>
             <Card.Text className='movieCard-description'>
               {movie.Description.slice(0, 100)}...

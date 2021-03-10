@@ -40306,14 +40306,12 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement("h3", null, "Date of Birth:"), _react.default.createElement(_Form.default.Label, null, this.state.dob)), _react.default.createElement(_reactRouterDom.Link, {
         to: "/update/".concat(this.state.username)
       }, _react.default.createElement(_Button.default, {
-        variant: "outline-dark",
         type: "link",
         size: "sm",
         block: true
       }, "Edit Profile")), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
-        variant: "outline-dark",
         type: "submit",
         size: "sm",
         block: true
@@ -53791,7 +53789,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         className: "detailInfo"
       }, movie.RunTime), _react.default.createElement(_reactBootstrap.Card.Text, {
         className: "detailInfo"
-      }, movie.IMDbRating, " out of 10"), _react.default.createElement(_reactBootstrap.Card.Text, {
+      }), _react.default.createElement(_reactBootstrap.Card.Text, {
         className: "movieCard-description"
       }, movie.Description.slice(0, 100), "..."))));
     }
@@ -54559,6 +54557,13 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/about/EM.jpeg":[function(require,module,exports) {
+module.exports = "/EM.f0333e28.jpeg";
+},{}],"components/about/about.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
 },{"_css_loader":"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/about/about.jsx":[function(require,module,exports) {
 "use strict";
 
@@ -54568,6 +54573,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _EM = _interopRequireDefault(require("./EM.jpeg"));
+
+require("./about.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -54610,8 +54621,8 @@ var About = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       return _react.default.createElement("div", null, _react.default.createElement("h1", null, "About"), _react.default.createElement("img", {
-        src: "img/ElizabethMercado.jpg",
-        "class": "profile__portrait",
+        src: _EM.default,
+        className: "profile",
         alt: "Elizabeth Mercado Portrait"
       }), _react.default.createElement("p", null, "Hello, I\u2019m Elizabeth. I\u2019m a developer with a background in social work and community organizing. My roles included supporting children and adults in their leadership development as they navigated their journeys in policy advocacy and change. I\u2019m transitioning to software development because I understand the power technology has in the world today to make effective and fast change in order to make life more just and equitable for all. I am looking for an opportunity to couple my social justice lens and my curiosity to use tech for social good."), _react.default.createElement("p", null, "Throughout this project, I learned how to utilize React for frontend devlelopment and Node.js for backened development. I also had the chance to learn more about databases, such as MongoDB to store all of the movie data used for this application. And of course, ensuring that all code was pushed to GitHub to for hosting and version control."), _react.default.createElement("p", null, "When I'm not learning how to code or thinking about how to change society, I'm:"), _react.default.createElement("ul", null, _react.default.createElement("li", null, "Learning new recipes"), _react.default.createElement("li", null, "Spending time in nature"), _react.default.createElement("li", null, "Shopping"), _react.default.createElement("li", null, "Eating dessert")));
     }
@@ -54621,7 +54632,7 @@ var About = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 exports.default = About;
-},{"react":"../node_modules/react/index.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./EM.jpeg":"components/about/EM.jpeg","./about.scss":"components/about/about.scss"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -55096,7 +55107,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53392" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54751" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

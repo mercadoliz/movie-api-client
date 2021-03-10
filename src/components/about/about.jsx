@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-
+import Image from "./EM.jpeg"
+import "./about.scss"
 export default class About extends Component {
   render() {
     return (
       <div>
         <h1>About</h1>
         <img
-          src="img/ElizabethMercado.jpg"
-          class="profile__portrait"
+          src={Image}
+          className="profile"
           alt="Elizabeth Mercado Portrait"
         ></img>
 

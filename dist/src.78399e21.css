@@ -52,6 +52,7 @@
   text-align: center;
 }
 body {
+  color: white;
   background-color: black;
 }
 .navbar {
@@ -80,8 +81,8 @@ body {
   opacity: 0.5;
   transition: 0.7s;
 }
-.my-flix {
-  color: steelblue;
+.profile {
+  width: 30%;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

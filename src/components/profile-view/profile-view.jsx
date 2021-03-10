@@ -121,12 +121,12 @@ export class ProfileView extends React.Component {
                   <Form.Label>{this.state.dob}</Form.Label>
                 </Form.Group>
                 <Link to={`/update/${this.state.username}`}>
-                  <Button variant="outline-dark" type="link" size="sm" block>
+                  <Button type="link" size="sm" block>
                     Edit Profile
                   </Button>
                 </Link>
                 <Link to={`/`}>
-                  <Button variant="outline-dark" type="submit" size="sm" block>
+                  <Button  type="submit" size="sm" block>
                     Back to Main
                   </Button>
                 </Link>
