@@ -82,7 +82,14 @@ body {
   transition: 0.7s;
 }
 .profile {
-  width: 30%;
+  width: 15%;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

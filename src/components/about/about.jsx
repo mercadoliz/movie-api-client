@@ -10,6 +10,7 @@ export default class About extends Component {
           src={Image}
           className="profile"
           alt="Elizabeth Mercado Portrait"
+          class="center"
         ></img>
 
         <p>
