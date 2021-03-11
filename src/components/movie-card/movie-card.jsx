@@ -40,7 +40,7 @@ export class MovieCard extends React.Component {
     const { movie } = this.props;
     if (movie === undefined) return <div></div>;
     return (
-      <Link to={`/movies/${movie.Title}`}>
+      <Link to={`/movies/${movie._id}`}>
         <Card>
           <Card.Img
             className='movieCard-img'
