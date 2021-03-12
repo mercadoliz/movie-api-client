@@ -51,6 +51,11 @@
   justify-content: center !important;
   text-align: center;
 }
+
+.movie-poster {
+  width: 370px;
+  height: 500px;
+}
 body {
   color: white;
   background-color: black;
